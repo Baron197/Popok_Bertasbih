@@ -13,6 +13,10 @@ import {
     DropdownItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Cookies from 'universal-cookie';
+import { onUserLogout, keepLogin } from '../actions';
+
+const cookies = new Cookies();
 
 class HeaderBertasbih extends Component {
     constructor(props) {
@@ -29,6 +33,18 @@ class HeaderBertasbih extends Component {
         });
     }
 
+    componentDidMount() {
+        const username = cookies.get('Ferguso');
+        if(username !== undefined) {
+            this.props.keepLogin(username);
+        }
+    }
+
+    onLogOutSelect = () => {
+        this.props.onUserLogout();
+        cookies.remove('Ferguso');
+    }
+
     render() {
         if(this.props.username === "") {
             return (
@@ -39,7 +55,7 @@ class HeaderBertasbih extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                         <NavItem>
-                            <NavLink>Register</NavLink>
+                            <Link to="/register"><NavLink>Register</NavLink></Link>
                         </NavItem>
                         <NavItem>
                             <Link to="/login"><NavLink>Login</NavLink></Link>
@@ -70,8 +86,8 @@ class HeaderBertasbih extends Component {
                                 Option 2
                             </DropdownItem>
                             <DropdownItem divider />
-                            <DropdownItem>
-                                Reset
+                            <DropdownItem onClick={this.onLogOutSelect}>
+                                Logout
                             </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>
@@ -84,10 +100,10 @@ class HeaderBertasbih extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return { username: state.username }
+    return { username: state.auth.username }
 }
 
-export default connect(mapStateToProps)(HeaderBertasbih);
+export default connect(mapStateToProps, { onUserLogout, keepLogin })(HeaderBertasbih);
 
 // var objKucing = { kurcaci: 'Hello', bertasbih: { nyingnyong: 'Teletubies'} }
 

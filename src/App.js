@@ -4,6 +4,7 @@ import ContentBertasbih from './components/ContentBertasbih';
 import LoginBertasbih from './components/LoginBertasbih';
 import HomeBertasbih from './components/HomeBertasbih';
 import { Route } from 'react-router-dom';
+import RegisterBertasbih from './components/RegisterBertasbih';
 // import FooterBertasbih from './components/FooterBertasbih';
 // import InputBertasbih from './components/InputBertasbih';
 
@@ -16,11 +17,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className={"container-fluid"}>
-        <HeaderBertasbih navBrand={"Bertasbih"} />
-        <div>
+      <div>
+        <HeaderBertasbih navBrand={"Kacrut"} />
+        <div className={'container-fluid'}>
           <Route exact path="/" component={HomeBertasbih} />
           <Route path="/login" component={LoginBertasbih} />
+          <Route path="/register" component={RegisterBertasbih} />
         </div>
       </div>
     );

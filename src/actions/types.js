@@ -1,0 +1,5 @@
+export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
+export const USER_NOT_FOUND = 'USER_NOT_FOUND';
+export const LOGIN_SYSTEM_ERROR = 'LOGIN_SYSTEM_ERROR';
+export const LOGIN_LOADING = 'LOGIN_LOADING';
+export const LOGOUT = 'LOGOUT';

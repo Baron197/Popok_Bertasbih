@@ -5,11 +5,12 @@ import axios from 'axios';
 class HomeBertasbih extends Component {
     state = { listPopok: [] }
 
-    componentDidMount() {
+    componentWillMount() {
         axios.get('http://localhost:1997/popok')
             .then((res) => {
-                console.log(res.data)
                 this.setState({ listPopok: res.data })
+            }).catch((err) => {
+                console.log(err)
             })
     }
 
@@ -26,6 +27,7 @@ class HomeBertasbih extends Component {
     }
 
     render() {
+        console.log(this.state.listPopok)
         return(
             <div>
                 <h1>Ini Home</h1>

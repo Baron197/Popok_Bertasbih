@@ -3,5 +3,5 @@ import AuthReducer from './AuthReducer';
 
 export default combineReducers({
     pikachu: () => 'Ryan Reynolds',
-    username: AuthReducer
+    auth: AuthReducer
 });
