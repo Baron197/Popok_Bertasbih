@@ -54,12 +54,15 @@ class HeaderBertasbih extends Component {
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
-                        <NavItem>
-                            <Link to="/register"><NavLink>Register</NavLink></Link>
-                        </NavItem>
-                        <NavItem>
-                            <Link to="/login"><NavLink>Login</NavLink></Link>
-                        </NavItem>
+                            <NavItem>
+                                <Link to="/popoklist"><NavLink>Browse Popok</NavLink></Link>
+                            </NavItem>
+                            <NavItem>
+                                <Link to="/register"><NavLink>Register</NavLink></Link>
+                            </NavItem>
+                            <NavItem>
+                                <Link to="/login"><NavLink>Login</NavLink></Link>
+                            </NavItem>
                         </Nav>
                     </Collapse>
                     </Navbar>

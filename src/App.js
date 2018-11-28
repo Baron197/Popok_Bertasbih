@@ -5,6 +5,7 @@ import LoginBertasbih from './components/LoginBertasbih';
 import HomeBertasbih from './components/HomeBertasbih';
 import { Route } from 'react-router-dom';
 import RegisterBertasbih from './components/RegisterBertasbih';
+import PopokListBertasbih from './components/PopokListBertasbih';
 // import FooterBertasbih from './components/FooterBertasbih';
 // import InputBertasbih from './components/InputBertasbih';
 
@@ -19,10 +20,11 @@ class App extends Component {
     return (
       <div>
         <HeaderBertasbih navBrand={"Kacrut"} />
-        <div className={'container-fluid'}>
+        <div>
           <Route exact path="/" component={HomeBertasbih} />
           <Route path="/login" component={LoginBertasbih} />
           <Route path="/register" component={RegisterBertasbih} />
+          <Route path="/popoklist" component={PopokListBertasbih} />
         </div>
       </div>
     );

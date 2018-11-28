@@ -1,8 +1,7 @@
 import { 
     USER_LOGIN_SUCCESS, 
-    USER_NOT_FOUND, 
-    LOGIN_SYSTEM_ERROR, 
-    LOGIN_LOADING,
+    AUTH_SYSTEM_ERROR, 
+    AUTH_LOADING,
     LOGOUT
 } from '../actions/types';
 
@@ -12,11 +11,9 @@ export default (state = INITIAL_STATE, action) => {
     switch(action.type) {
         case USER_LOGIN_SUCCESS :
             return { ...INITIAL_STATE, username: action.payload };
-        case USER_NOT_FOUND :
-            return { ...INITIAL_STATE, error: 'Username or password invalid' }
-        case LOGIN_SYSTEM_ERROR :
-            return { ...INITIAL_STATE, error: 'System Error' }
-        case LOGIN_LOADING :
+        case AUTH_SYSTEM_ERROR :
+            return { ...INITIAL_STATE, error: action.payload }
+        case AUTH_LOADING :
             return { ...INITIAL_STATE, loading: true }
         case LOGOUT :
             return INITIAL_STATE;
