@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import PopokItemBertasbih from './PopokItemBertasbih';
 
 class PopokListBertasbih extends Component {
     state = { listPopok: [] }
@@ -16,44 +19,39 @@ class PopokListBertasbih extends Component {
     renderListPopok = () => {
         var listJSXPopok = this.state.listPopok.map((item) => {
             return (
-                <div className="col-md-4 col-sm-6 portfolio-item">
-                    <a className="portfolio-link" data-toggle="modal" href="#portfolioModal1">
-                        <div className="portfolio-hover">
-                            <div className="portfolio-hover-content">
-                                <i className="fas fa-plus fa-3x" />
-                            </div>
-                        </div>
-                        <img className="img-fluid" src={item.img} alt="ferguso" />
-                    </a>
-                    <div className="portfolio-caption">
-                        <h4>{item.nama}</h4>
-                        <p className="text-muted">{item.description}</p>
-                    </div>
-                </div>  
+                <PopokItemBertasbih popok={item} />
             )
         })
         return listJSXPopok;
     }
 
     render() {
-        return (
-            <div>
-                <section className="bg-light" id="portfolio">
-                    <div className="container-fluid">
-                        <div className="row">
-                        <div className="col-lg-12 text-center">
-                            <h2 className="section-heading text-uppercase">List Popok</h2>
-                            <h3 className="section-subheading text-muted">Best popok in town.</h3>
+        if(this.props.username !== "") {
+            return (
+                <div>
+                    <section className="bg-light" id="portfolio">
+                        <div className="container-fluid">
+                            <div className="row">
+                            <div className="col-lg-12 text-center">
+                                <h2 className="section-heading text-uppercase">List Popok</h2>
+                                <h3 className="section-subheading text-muted">Best popok in town.</h3>
+                            </div>
+                            </div>
+                            <div className="row">
+                                   {this.renderListPopok()}
+                            </div>
                         </div>
-                        </div>
-                        <div className="row">
-                               {this.renderListPopok()}
-                        </div>
-                    </div>
-                </section>
-            </div>
-        );
+                    </section>
+                </div>
+            );
+        }
+        
+        return <Redirect to='/login' />
     }
 }
 
-export default PopokListBertasbih;
+const mapStateToProps = (state) => {
+    return { username: state.auth.username }
+}
+
+export default connect(mapStateToProps)(PopokListBertasbih);

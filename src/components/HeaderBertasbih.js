@@ -33,13 +33,6 @@ class HeaderBertasbih extends Component {
         });
     }
 
-    componentDidMount() {
-        const username = cookies.get('Ferguso');
-        if(username !== undefined) {
-            this.props.keepLogin(username);
-        }
-    }
-
     onLogOutSelect = () => {
         this.props.onUserLogout();
         cookies.remove('Ferguso');
@@ -77,23 +70,26 @@ class HeaderBertasbih extends Component {
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
-                    <UncontrolledDropdown nav inNavbar>
-                        <DropdownToggle nav caret>
-                            Hello, {this.props.username}
-                        </DropdownToggle>
-                        <DropdownMenu right>
-                            <DropdownItem>
-                                Option 1
-                            </DropdownItem>
-                            <DropdownItem>
-                                Option 2
-                            </DropdownItem>
-                            <DropdownItem divider />
-                            <DropdownItem onClick={this.onLogOutSelect}>
-                                Logout
-                            </DropdownItem>
-                        </DropdownMenu>
-                    </UncontrolledDropdown>
+                        <NavItem>
+                            <Link to="/popoklist"><NavLink>Browse Popok</NavLink></Link>
+                        </NavItem>
+                        <UncontrolledDropdown nav inNavbar>
+                            <DropdownToggle nav caret>
+                                Hello, {this.props.username}
+                            </DropdownToggle>
+                            <DropdownMenu right>
+                                <DropdownItem>
+                                    <Link to="/managepopok">Manage Popok</Link>
+                                </DropdownItem>
+                                <DropdownItem>
+                                    Option 2
+                                </DropdownItem>
+                                <DropdownItem divider />
+                                <DropdownItem onClick={this.onLogOutSelect}>
+                                    Logout
+                                </DropdownItem>
+                            </DropdownMenu>
+                        </UncontrolledDropdown>
                     </Nav>
                 </Collapse>
                 </Navbar>

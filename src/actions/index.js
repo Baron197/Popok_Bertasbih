@@ -3,7 +3,8 @@ import {
     USER_LOGIN_SUCCESS, 
     AUTH_SYSTEM_ERROR, 
     AUTH_LOADING,
-    LOGOUT
+    LOGOUT,
+    COOKIE_CHECKED
 } from './types';
 
 export const onUserRegister = ({ username, email, phone, password }) => {
@@ -55,6 +56,10 @@ export const onUserLogin = ({ username, password }) => {
 
 export const keepLogin = (username) => {
     return { type: USER_LOGIN_SUCCESS, payload: username }
+}
+
+export const cookieChecked = () => {
+    return { type: COOKIE_CHECKED }
 }
 
 var loginYok = (dispatch,username,password) => {
