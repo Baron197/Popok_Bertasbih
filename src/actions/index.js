@@ -4,7 +4,8 @@ import {
     AUTH_SYSTEM_ERROR, 
     AUTH_LOADING,
     LOGOUT,
-    COOKIE_CHECKED
+    COOKIE_CHECKED,
+    SELECT_POPOK
 } from './types';
 
 export const onUserRegister = ({ username, email, phone, password }) => {
@@ -71,7 +72,10 @@ var loginYok = (dispatch,username,password) => {
         }).then((res) => {
             console.log(res)
             if (res.data.length > 0) {
-                dispatch({ type: USER_LOGIN_SUCCESS, payload: username })
+                dispatch({ 
+                    type: USER_LOGIN_SUCCESS, 
+                    payload: { email: res.data[0].email, username }
+                })
             }
             else {
                 dispatch({ type: AUTH_SYSTEM_ERROR, payload: 'Username or password invalid' })
@@ -80,4 +84,11 @@ var loginYok = (dispatch,username,password) => {
             console.log(err)
             dispatch({ type: AUTH_SYSTEM_ERROR, payload: 'System Error' })
         })
+}
+
+export const select_popok = (selectedPopok) => {
+    return { 
+        type: SELECT_POPOK,
+        payload: selectedPopok
+    }
 }
