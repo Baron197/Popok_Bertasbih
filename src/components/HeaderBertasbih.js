@@ -71,7 +71,7 @@ class HeaderBertasbih extends Component {
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
-                            <Link to="/popoklist"><NavLink>Browse Popok</NavLink></Link>
+                            <NavLink href="/popoklist">Browse Popok</NavLink>
                         </NavItem>
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>

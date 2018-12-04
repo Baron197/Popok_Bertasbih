@@ -12,14 +12,14 @@ class PopokItemBertasbih extends Component {
         const { img, nama, description, harga } = this.props.popok;
         return (
             <div onClick={this.onItemClick} className={`col-md-${this.props.size} col-sm-6 portfolio-item`}>
-                <a className="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                <div className="portfolio-link" data-toggle="modal">
                     <div className="portfolio-hover">
                         <div className="portfolio-hover-content">
                             <i className="fas fa-plus fa-3x" />
                         </div>
                     </div>
                     <img className="img-fluid" src={img} alt="ferguso" />
-                </a>
+                </div>
                 <div className="portfolio-caption">
                     <h4>{nama}</h4>
                     <p className="text-muted">{description}</p>

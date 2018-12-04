@@ -59,7 +59,7 @@ class PopokListBertasbih extends Component {
     render() {
         if(this.props.username !== "") {
             if(this.props.popok.id !== 0) {
-                return <Redirect to="/popokdetail" />
+                return <Redirect to={`/popokdetail?popokid=${this.props.popok.id}&namapopok=${this.props.popok.nama}`} />
             }
             return (
                 <div>
