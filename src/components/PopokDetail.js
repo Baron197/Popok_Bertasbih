@@ -18,6 +18,50 @@ class PopokDetail extends Component {
                 console.log(err)
             })
     }
+
+    onBtnAddToCartClick = () => {
+        var { id, nama, harga, img } = this.props.popok;
+        var quantity = parseInt(this.refs.tbQuantity.value);
+
+        axios.get('http://localhost:1997/cart', {
+            params: {
+                username: this.props.username,
+                popokId: id
+            }
+        }).then((res) => {
+            if(res.data.length > 0) {
+                axios.put('http://localhost:1997/cart/' + res.data[0].id, {
+                    username : this.props.username,
+                    popokId: id,
+                    harga,
+                    quantity,
+                    nama,
+                    img
+                }).then((res) => {
+                    alert('Edit Cart Success!')
+                }).catch((err) => {
+                    console.log(err)
+                })
+            }
+            else {
+                axios.post('http://localhost:1997/cart', {
+                    username : this.props.username,
+                    popokId: id,
+                    harga,
+                    quantity,
+                    nama,
+                    img
+                }).then((res) => {
+                    alert('Add to Cart Success!')
+                }).catch((err) => {
+                    console.log(err)
+                })
+            }
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
      render() {
         var { nama, harga, img, description, merk } = this.props.popok;
         return(
@@ -39,6 +83,16 @@ class PopokDetail extends Component {
                         <div className="row">
                             <p>{description}</p>
                         </div>
+                        <div className="row">
+                            <div className="col-3">
+                                <input type="number" ref="tbQuantity" defaultValue={1} />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-3">
+                                <input type="button" className="btn btn-success" value="Add to Cart" onClick={this.onBtnAddToCartClick} />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,7 +101,7 @@ class PopokDetail extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return { popok: state.selectedPopok }
+    return { popok: state.selectedPopok, username: state.auth.username }
 }
 
 export default connect(mapStateToProps, { select_popok })(PopokDetail);

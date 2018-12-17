@@ -16,9 +16,15 @@ class LoginBertasbih extends Component {
     }
 
     onBtnLoginClick = () => {
-        var username = this.refs.username.refs.tbUsername.value;
-        var password = this.refs.password.refs.tbPassword.value;
-        this.props.onUserLogin({username, password})
+        try {
+            this.props.onUserLogin({
+                username: this.refs.username.refs.tbUsername.value, 
+                password: this.refs.password.refs.tbPassword.value
+            })
+        } catch(err) {
+            console.log(err)
+        }
+        
     }
 
     renderError = () => {

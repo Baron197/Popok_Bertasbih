@@ -11,6 +11,8 @@ import RegisterBertasbih from './components/RegisterBertasbih';
 import PopokListBertasbih from './components/PopokListBertasbih';
 import ManagePopokBertasbih from './components/ManagePopokBertasbih';
 import PopokDetail from './components/PopokDetail';
+import CartBertasbih from './components/CartBertasbih';
+import HistoryBertasbih from './components/HistoryBertasbih';
 
 const cookies = new Cookies();
 
@@ -43,6 +45,8 @@ class App extends Component {
             <Route path="/popoklist" component={PopokListBertasbih} />
             <Route path="/managepopok" component={ManagePopokBertasbih} />
             <Route path="/popokdetail" component={PopokDetail} />
+            <Route path="/cart" component={CartBertasbih} />
+            <Route path="/history" component={HistoryBertasbih} />
           </div>
         </div>
       );

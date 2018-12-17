@@ -31,7 +31,7 @@ class HomeBertasbih extends Component {
         return(
             <div>
                 <h1>Ini Home</h1>
-                {this.renderListPopok()}
+                {/* {this.renderListPopok()} */}
                 <h2>{this.props.pikachu}</h2>
             </div>
         );
